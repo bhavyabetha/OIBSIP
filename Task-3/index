@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+	body {
+    font-family: 'Times New Roman', Times, serif, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.converter {
+    margin-bottom: 20px;
+}
+
+input, select, button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.result {
+    font-size: 18px;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Temperature Converter</h1>
+        <div class="converter">
+            <input type="number" id="inputTemperature" placeholder="Enter temperature">
+            <select id="inputScale">
+                <option value="Celsius">Celsius</option>
+                <option value="Fahrenheit">Fahrenheit</option>
+            </select>
+            <button onclick="convertTemperature()">Convert</button>
+        </div>
+        <div class="result" id="result"></div>
+    </div>
+    <script>
+	function convertTemperature() {
+   	 const inputTemperature = document.getElementById('inputTemperature').value;
+    	const inputScale = document.getElementById('inputScale').value;
+    	let outputTemperature;
+    	let outputScale;
+
+    	if (inputScale === 'Celsius') {
+        	outputTemperature = (inputTemperature * 9/5) + 32;
+        	outputScale = 'Fahrenheit';
+        	document.getElementById('result').innerText = `${inputTemperature}° Celcius is equal to ${outputTemperature.toFixed(2)}° ${outputScale}`;
+    } else {
+        	outputTemperature = (inputTemperature - 32) * 5/9;
+        	outputScale = 'Celsius';
+        	document.getElementById('result').innerText = `${inputTemperature}° Fahrenheit is equal to ${outputTemperature.toFixed(2)}° ${outputScale}`;
+    }
+}
+	
+</script>
+</body>
+</html>
